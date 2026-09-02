@@ -7,7 +7,7 @@ Projet Spark & Scala — Système d'analyse de données e-commerce (Groupe 3).
 - **Java 17** (Temurin/OpenJDK) — Spark 3.5.x ne supporte officiellement que Java 8/11/17. Si ta machine a une autre version par défaut (ex. Java 21/23 installée pour autre chose), fixe le JDK utilisé pour ce projet à chaque session de travail :
   ```
   export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-  java -version   # doit afficher "17..."
+  java -version   
   ```
 - **Scala 2.12.18** — géré directement par sbt via `build.sbt`, pas d'installation globale requise.
 - **sbt 1.10.x**
@@ -18,7 +18,7 @@ Projet Spark & Scala — Système d'analyse de données e-commerce (Groupe 3).
 _À compléter (Membre 1, Question 1.2) une fois build.sbt écrit :_
 ```
 sbt compile
-sbt assembly   # génère le JAR exécutable
+sbt assembly   
 ```
 
 ## Exécution locale

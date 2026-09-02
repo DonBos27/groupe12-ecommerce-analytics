@@ -3,11 +3,11 @@
 ## Membres
 
 | Prénom Nom | Email              | Rôle | Nom configuré en Git (`git config user.name`) |
-|---|--------------------|---|---|
-| _BUKA BOSENGA DON-CHRIST_ | bosengad@gmail.com | Platform & Ingestion | |
-| _(Membre 2)_ |                    | Data Quality & Cohortes | |
-| _(Membre 3)_ |                    | Transformation | |
-| _(Membre 4)_ |                    | Analytics & Orchestration | |
+|---|--------------------|---|-----------------------------------------------|
+| _BUKA BOSENGA DON-CHRIST_ | bosengad@gmail.com | Platform & Ingestion | Don-Christ Bosenga                            |
+| _(Membre 2)_ |                    | Data Quality & Cohortes |                                               |
+| _(Membre 3)_ |                    | Transformation |                                               |
+| _(Membre 4)_ |                    | Analytics & Orchestration |                                               |
 
 ## Répartition des questions
 
