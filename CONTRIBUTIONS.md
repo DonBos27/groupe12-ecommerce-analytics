@@ -23,7 +23,7 @@ L'intégration du pipeline (Question 6.1) est validée par les quatre membres. L
 ### BUKA BOSENGA DON-CHRIST
 
 - **Charge estimée :** ~6 h (installation et configuration de l'environnement Java/Scala/sbt/Spark pour toute l'équipe comprise).
-- **Périmètre :** questions 1.1, 1.2, 1.3, 2.1, 2.3 et 7.1.
+- **Périmètre :** structure du projet et configuration sbt (1.1, 1.2), README (1.3), ingestion des 4 sources de données avec gestion des erreurs et résumé de validation (2.1, 2.3), configuration externalisée via `application.conf` (7.1), et mise en place de l'environnement de travail (JDK 17, sbt, dépôt Git) pour toute l'équipe.
 - **Difficultés rencontrées :**
   - Plusieurs JDK coexistaient sur le poste (23, 21, puis 17 installé pour ce projet) et `JAVA_HOME` revenait sans arrêt sur une version incompatible (Spark 3.5.x ne supporte officiellement que 8/11/17) selon le terminal ou la session ouverte. Résolu durablement par un script `sbt17.sh`, versionné à la racine, qui résout et exporte le JDK 17 avant de lancer `sbt`, plutôt que de compter sur un `export JAVA_HOME` à refaire à chaque session.
   - Même avec le bon JDK, `sbt console` levait `IllegalAccessError: class ... cannot access class sun.nio.ch.DirectBuffer` : le module system de Java 17 (JPMS) bloque des accès réflexifs dont Spark a besoin. Résolu en ajoutant un fichier `.jvmopts` à la racine avec les `--add-opens` nécessaires, repris aussi dans `javaOptions` de `build.sbt` pour que la JVM forkée par `sbt run` bénéficie des mêmes options.
@@ -54,9 +54,10 @@ L'intégration du pipeline (Question 6.1) est validée par les quatre membres. L
 
 ### CISSE ABDOULAHI DIT DIORO
 
-- **Charge estimée :** _à renseigner_.
-- **Périmètre :** questions 4.1, 5.1, 5.2 et 6.1.
-- **Difficultés rencontrées :** _à renseigner_.
+- **Charge estimée :** ~5 h 
+- **Périmètre :** rapport détaillé par marchand (4.1), optimisations Spark — mise en cache et diffusion des tables de référence (5.1, 5.2), orchestration complète du pipeline dans `MainApp` (6.1).
+- **Difficultés rencontrées :**
+  - Environnement de développement sous Windows peu compatible avec l'outillage du projet (scripts shell comme `sbt17.sh`, chemins avec espaces, écosystème Spark pensé pour macOS/Linux) : contourné en basculant l'exécution sur une machine Linux.
 
 ## 3. Décisions techniques du groupe
 
