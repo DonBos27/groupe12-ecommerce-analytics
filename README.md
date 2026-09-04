@@ -1,6 +1,6 @@
 # EcommerceAnalytics
 
-Projet Spark & Scala — Système d'analyse de données e-commerce (Groupe 3).
+Projet Spark & Scala — Système d'analyse de données e-commerce (Groupe 12).
 
 ## Prérequis
 
