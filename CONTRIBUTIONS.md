@@ -1,4 +1,4 @@
-# Contributions — Groupe 3
+# Contributions — Groupe 12
 
 ## 1. Tableau récapitulatif
 
