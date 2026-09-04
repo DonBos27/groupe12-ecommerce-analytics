@@ -3,11 +3,11 @@
 ## Membres
 
 | Prénom Nom | Email              | Rôle | Nom configuré en Git (`git config user.name`) |
-|---|--------------------|---|-----------------------------------------------|
-| _BUKA BOSENGA DON-CHRIST_ | bosengad@gmail.com | Platform & Ingestion | Don-Christ Bosenga                            |
+|---|--------------------|---|---------------------------------------------|
+| _BUKA BOSENGA DON-CHRIST_ | bosengad@gmail.com | Platform & Ingestion | Don-Christ Bosenga                          |
 | ADIGBONON Mahoutondji Thérèse Rodica | adigbononrodicaa@gmail.com | Data Quality & Cohortes | ADIGBONON Mahoutondji Thérèse Rodica |
 | DOUTI Dabilibe | etiennedouti6021@gmail.com | Transformation | Etienne DOUTI |
-| _(Membre 4)_ |                    | Analytics & Orchestration |                                               |
+| CISSE ABDOULAHI DIT DIORO | abdiocis94@gmail.com | Analytics & Orchestration | |
 
 ## Répartition des questions
 
@@ -17,3 +17,6 @@
 - **Membre 4 — Analytics & Orchestration** : 4.1, 5.1, 5.2, 6.1
 
 Parties 8/9 (livrables, soutenance) : collectives.
+
+
+
