@@ -18,17 +18,22 @@ import org.apache.spark.sql.{Column, DataFrame, Dataset}
   * Schéma du DataFrame enrichi (en plus des neuf colonnes de `Transaction`) :
   *  - utilisateur : age, annual_income, city, customer_segment, preferred_categories, registration_date
   *  - produit     : product_name, product_category, price, rating, stock
-  *  - marchand    : merchant_name, merchant_category, region, commission_rate, establishment_date
+  *  - marchand    : name, merchant_category, region, commission_rate, establishment_date
   *  - temps (3.1) : transaction_ts, transaction_date, hour, day_of_week, month,
   *                  is_weekend, day_period, is_working_hours
   *  - fenêtres (3.2) : user_transaction_rank, user_transaction_count, age_group
   *  - comportements (3.3) : amount_last_7_days, active_days_last_7_days, is_active_user,
   *                          days_since_previous_transaction
   *
-  * Règle de nommage : les colonnes des tables de référence gardent leur nom d'origine,
-  * sauf lorsqu'il entre en collision avec une autre table (`name`, `category`) ; elles
-  * sont alors préfixées par le nom de leur table. Les colonnes de `Transaction` ne sont
-  * jamais renommées : le DataFrame enrichi reste un sur-ensemble des transactions.
+  * Règle de nommage (contrat avec la Partie 4) : les colonnes de `Transaction` ne sont
+  * jamais renommées, le DataFrame enrichi reste un sur-ensemble des transactions. Les
+  * colonnes des tables de référence gardent leur nom d'origine, sauf collision :
+  *  - `name` désigne le marchand, colonne attendue telle quelle par le rapport marchand
+  *    (Question 4.1) ; le nom du produit devient `product_name` ;
+  *  - `category` reste la catégorie de la transaction, sur laquelle la Question 4.1
+  *    regroupe les KPI ; elle coïncide avec celle du marchand dans les données fournies
+  *    (invariant vérifié par `TransformationCheck`). Les catégories des tables de référence
+  *    deviennent `product_category` et `merchant_category`.
   */
 object DataTransformation {
 
@@ -144,9 +149,10 @@ object DataTransformation {
       col("stock")
     )
 
+    // `name` garde son nom : c'est la colonne « nom du marchand » attendue par Analytics (4.1).
     val merchantAttributes = merchants.select(
       col("merchant_id"),
-      col("name").as("merchant_name"),
+      col("name"),
       col("category").as("merchant_category"),
       col("region"),
       col("commission_rate"),

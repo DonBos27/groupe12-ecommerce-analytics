@@ -124,7 +124,7 @@ object TransformationCheck {
 
     println("\n  Aperçu du DataFrame enrichi :")
     enriched
-      .select("transaction_id", "user_id", "amount", "timestamp", "merchant_name", "age_group",
+      .select("transaction_id", "user_id", "amount", "timestamp", "name", "age_group",
         "day_of_week", "day_period", "user_transaction_rank", "user_transaction_count",
         "amount_last_7_days", "active_days_last_7_days", "is_active_user", "days_since_previous_transaction")
       .orderBy("user_id", "user_transaction_rank")
@@ -136,9 +136,14 @@ object TransformationCheck {
       enriched.select("transaction_id").distinct().count() == enrichedCount
     }
     val orphanUsers = enriched.filter(col("age").isNull).count()
-    val orphanMerchants = enriched.filter(col("merchant_name").isNull).count()
+    val orphanMerchants = enriched.filter(col("name").isNull).count()
     println(s"      transactions sans utilisateur connu : $orphanUsers, sans marchand connu : $orphanMerchants")
     check("jointures : les références orphelines sont conservées (colonnes nulles)")(orphanUsers > 0 && orphanMerchants > 0)
+    // Le rapport marchand (4.1) regroupe sur `category` : l'invariant ci-dessous garantit
+    // qu'il ne scinde pas un marchand connu en plusieurs lignes.
+    check("contrat 4.1 : la catégorie de la transaction coïncide avec celle du marchand connu") {
+      enriched.filter(col("merchant_category").isNotNull && col("category") =!= col("merchant_category")).count() == 0
+    }
 
     // --- UDF appliquée (3.1) -------------------------------------------------
     check("temps : aucun horodatage validé ne reste sans caractéristiques") {
