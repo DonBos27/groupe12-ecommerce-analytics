@@ -6,7 +6,7 @@
 |---|--------------------|---|-----------------------------------------------|
 | _BUKA BOSENGA DON-CHRIST_ | bosengad@gmail.com | Platform & Ingestion | Don-Christ Bosenga                            |
 | ADIGBONON Mahoutondji Thérèse Rodica | adigbononrodicaa@gmail.com | Data Quality & Cohortes | ADIGBONON Mahoutondji Thérèse Rodica |
-| _(Membre 3)_ |                    | Transformation |                                               |
+| DOUTI Dabilibe | etiennedouti6021@gmail.com | Transformation | Etienne DOUTI |
 | _(Membre 4)_ |                    | Analytics & Orchestration |                                               |
 
 ## Répartition des questions
